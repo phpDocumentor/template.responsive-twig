@@ -21,7 +21,7 @@
     </li>
 {% endmacro %}
 
-{% macro renderNamespaceDetails(node) %}
+{% macro renderPackageDetails(node) %}
     {% import _self as self %}
 
     {% if node.classes.count > 0 or node.interfaces.count > 0 or node.traits.count > 0 or node.functions.count > 0 or node.constants.count > 0 %}
@@ -32,7 +32,7 @@
         </ul>
 
         {% if node.functions.count > 0 %}
-            <div class="namespace-indent">
+            <div class="package-indent">
                 <h3><i class="icon-custom icon-function"></i> Functions</h3>
                 {% for function in node.functions %}
                     {{ self.elementSummary(function, 'function') }}
@@ -41,7 +41,7 @@
         {% endif %}
 
         {% if node.constants.count > 0 %}
-            <div class="namespace-indent">
+            <div class="package-indent">
                 <h3><i class="icon-custom icon-constant"></i> Constants</h3>
                 {% for constant in node.constants %}
                     {{ self.elementSummary(constant, 'constant') }}
@@ -50,7 +50,7 @@
         {% endif %}
 
         {% if node.classes.count > 0 or node.interfaces.count > 0 or node.traits.count > 0 %}
-            <div class="namespace-indent">
+            <div class="package-indent">
                 <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
                 {% for trait in node.traits %}
                     {{ self.elementSummary(trait, 'trait') }}
@@ -67,21 +67,21 @@
         {% endif %}
     {% endif %}
 
-    {% for namespace in node.children %}
-        {{ self.renderNamespaceDetails(namespace) }}
+    {% for package in node.children %}
+        {{ self.renderPackageDetails(package) }}
     {% endfor %}
 {% endmacro %}
 
-{% macro renderNamespaceSidebar(node) %}
+{% macro renderPackageSidebar(node) %}
     {% import _self as self %}
 
-    {% for namespace in node.children %}
+    {% for package in node.children %}
     <li>
-        <a href="{{ path(namespace) }}" title="{{ namespace.name }}">
-            <i class="icon-th"></i> {{ namespace.name }}
+        <a href="{{ path(package) }}" title="{{ package.name }}">
+            <i class="icon-th"></i> {{ package.name }}
         </a>
-        <ul class="nav nav-list nav-namespaces">
-            {{ self.renderNamespaceSidebar(namespace) }}
+        <ul class="nav nav-list nav-packages">
+            {{ self.renderPackageSidebar(package) }}
         </ul>
     </li>
     {% endfor %}
@@ -105,14 +105,14 @@
             </div>
             <ul class="side-nav nav nav-list">
                 <li class="nav-header">
-                    <i class="icon-map-marker"></i> Namespaces
+                    <i class="icon-map-marker"></i> Packages
                 </li>
-                {{ self.renderNamespaceSidebar(node) }}
+                {{ self.renderPackageSidebar(node) }}
             </ul>
         </div>
 
-        <div class="span8 namespace-contents">
-            {{ self.renderNamespaceDetails(node) }}
+        <div class="span8 package-contents">
+            {{ self.renderPackageDetails(node) }}
         </div>
     </div>
 {% endblock %}

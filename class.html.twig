@@ -84,8 +84,8 @@
             <div class="element class">
                 <h1>{{ node.name }}</h1>
                 <small style="display: block; text-align: right">
-                    {% if node.parentclass %}
-                        Extends {{ node.parentclass|route|join(', ')|raw }}
+                    {% if node.parent %}
+                        Extends {{ node.parent|route|join(', ')|raw }}
                     {% endif %}
                     {% if node.interfaces.count %}
                         Implements {{ node.interfaces|route|join(', ')|raw }}

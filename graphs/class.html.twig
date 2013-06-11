@@ -16,7 +16,7 @@
         });
 
         $(document).ready(function() {
-            $("#viewer").iviewer({src: {{ path('classes.svg') }}, zoom_animation: false});
+            $("#viewer").iviewer({src: '{{ path('classes.svg') }}', zoom_animation: false});
             $('#viewer img').bind('dragstart', function(event){
                 event.preventDefault();
             });

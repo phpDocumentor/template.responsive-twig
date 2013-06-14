@@ -31,11 +31,11 @@
         <div class="span8">
             <ul class="breadcrumb">
                 <li><a href="{{ path('/') }}"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
-                <li>Compilation.allerrors./li>
+                <li>Compilation Errors</li>
             </ul>
 
             {% if errorCount <= 0 %}
-                <div class="alert alert-info">No.allerrors.have been found in this project.</div>
+                <div class="alert alert-info">No errors have been found in this project.</div>
             {% endif %}
 
             {% for file in project.files %}
@@ -57,7 +57,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for error in file.allerrors.%}
+                                {% for error in file.allerrors %}
                                     <tr>
                                         <td>{{ error.severity }}</td>
                                         <td>{{ error.line }}</td>

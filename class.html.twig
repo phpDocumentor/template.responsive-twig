@@ -79,6 +79,9 @@
                                                         {% if (tag.name == "since") %}
                                                             {{ tag.version }}
                                                         {% endif %}
+                                                        {% if (tag.name == "see") %}
+                                                            {{ tag.reference|route|raw }}
+                                                        {% endif %}
                                                         {{ tag.description|markdown|raw }}
                                                     {% endfor %}
                                                 </td>

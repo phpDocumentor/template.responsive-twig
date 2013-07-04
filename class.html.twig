@@ -8,6 +8,11 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
     <div class="row">
         <div class="span4">
             {{ block('sidebar') }}
@@ -54,7 +59,7 @@
                     {% set specialMethods = node.magicMethods ? node.inheritedMethods.merge(node.magicMethods) : node.inheritedMethods %}
                     {% for method in node.methods.merge(specialMethods) %}
                         <a id="method_{{ method.name }}"></a>
-                        <div class="element clickable method {{ method.visibility }} method_{{ method.name }}{{ method.parent.name != node.name ? ' inherited' : '' }}" data-toggle="collapse" data-target=".method_{{ method.name }} .collapse">
+                        <div class="element clickable method {{ method.visibility }} {{ method.deprecated ? 'deprecated' }} method_{{ method.name }}{{ method.parent.name != node.name ? ' inherited' : '' }}" data-toggle="collapse" data-target=".method_{{ method.name }} .collapse">
                             <h2>{{ method.summary ?: method.name }}</h2>
                             <pre>{{ method.name }}({% for argument in method.arguments %}{{ argument.types ? argument.types|join('|')~' ' }}{{ argument.byReference ? '&' }}{{ argument.name }}{{ argument.default ? ' = '~argument.default }}{% if not loop.last %}, {% endif %}{% endfor %}) {{ method.response.types ? ': '~method.response.types|join('|') }}</pre>
                             <div class="labels">
@@ -112,7 +117,7 @@
                         <h3><i class="icon-custom icon-constant"></i> Constants</h3>
                         {% for constant in node.constants.merge(node.inheritedConstants) %}
                             <a id="constant_{{ constant.name }}"> </a>
-                            <div class="element clickable constant  constant_{{ constant.name }}{{ constant.parent.name != node.name ? ' inherited' : '' }}" data-toggle="collapse" data-target=".constant_{{ constant.name }} .collapse">
+                            <div class="element clickable constant {{ constant.deprecated ? 'deprecated' }} constant_{{ constant.name }}{{ constant.parent.name != node.name ? ' inherited' : '' }}" data-toggle="collapse" data-target=".constant_{{ constant.name }} .collapse">
                                 <h2>{{ constant.summary ?: constant.name }}</h2>
                                 <pre>{{ constant.name }}</pre>
                                 <div class="labels">
@@ -146,7 +151,7 @@
                         <h3><i class="icon-custom icon-property"></i> Properties</h3>
                         {% for property in node.properties.merge(specialProperties) %}
                             <a id="property_{{ property.name }}"> </a>
-                            <div class="element clickable property {{ property.visibility }} property_{{ property.name }}{{ property.parent.name != node.name ? ' inherited' : '' }}" data-toggle="collapse" data-target=".property_{{ property.name }} .collapse">
+                            <div class="element clickable property {{ property.deprecated ? 'deprecated' }} {{ property.visibility }} property_{{ property.name }}{{ property.parent.name != node.name ? ' inherited' : '' }}" data-toggle="collapse" data-target=".property_{{ property.name }} .collapse">
                                 <h2>{{ property.summary ?: property.var.0.description ?: property.name }}</h2>
                                 <pre>{{ property.name }}</pre>
                                 <div class="labels">

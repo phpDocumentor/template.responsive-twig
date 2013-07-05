@@ -26,7 +26,8 @@
         <li class="nav-header">
             <i class="icon-custom icon-method"></i> Methods
             <ul>
-                {% for item in node.methods.merge(node.inheritedMethods) %}
+                {% set specialMethods = node.magicMethods ? node.inheritedMethods.merge(node.magicMethods) : node.inheritedMethods %}
+                {% for item in node.methods.merge(specialMethods) %}
                     {% set type='method' %}
                     {% if item.visibility == '' or item.visibility == 'public' %}
                         {{ block('sidebar_entry') }}
@@ -36,7 +37,8 @@
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                {% for method in node.methods.merge(node.inheritedMethods) %}
+                {% set specialMethods = node.magicMethods ? node.inheritedMethods.merge(node.magicMethods) : node.inheritedMethods %}
+                {% for method in node.methods.merge(specialMethods) %}
                     {% if method.visibility == 'protected' %}
                         <li class="method {{ method.visibility }}{{ method.parent.name != node.name ? ' inherited' : '' }}">
                             <a href="#method_{{ method.name }}" title="{{ method.name }} :: {{ method.summary }}">
@@ -49,7 +51,8 @@
         </li>
         <li class="nav-header private">» Private
             <ul>
-                {% for method in node.methods.merge(node.inheritedMethods) %}
+                {% set specialMethods = node.magicMethods ? node.inheritedMethods.merge(node.magicMethods) : node.inheritedMethods %}
+                {% for method in node.methods.merge(specialMethods) %}
                     {% if method.visibility == 'private' %}
                         <li class="method {{ method.visibility }}{{ method.parent.name != node.name ? ' inherited' : '' }}">
                             <a href="#method_{{ method.name }}" title="{{ method.name }} :: {{ method.summary }}">

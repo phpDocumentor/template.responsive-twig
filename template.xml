@@ -19,10 +19,8 @@
       </ifModule>
   ]]></description>
   <transformations>
-    <transformation query="copy" writer="FileIo" source="images" artifact="img"/>
     <transformation query="copy" writer="FileIo" source="templates/responsive/img" artifact="img"/>
     <transformation query="copy" writer="FileIo" source="templates/responsive/css" artifact="css"/>
-    <transformation query="copy" writer="FileIo" source="js" artifact="js"/>
     <transformation query="copy" writer="FileIo" source="templates/responsive/js" artifact="js"/>
     <transformation writer="twig" source="templates/responsive-twig/index.html.twig" artifact="index.html"/>
     <transformation query="indexes.namespaces" writer="twig" source="templates/responsive-twig/namespace.html.twig" />

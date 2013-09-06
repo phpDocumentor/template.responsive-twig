@@ -1,10 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% macro elementSummary(element, type) %}
-    <div id="{{ element.name }}" class="element ajax clickable {{ type }}">
+    <div id="{{ type }}_{{ element.name }}" class="element ajax clickable {{ type }}" data-toggle="collapse" data-target="#{{ type }}_{{ element.name }} .collapse">
         <h1>{{ element.name }}{% if path(element) %}<a href="{{ path(element) }}">¶</a>{% endif %}</h1>
         <p class="short_description">{{ element.summary }}</p>
-        <div class="details collapse">{{ element.description }}</div>
+        <div class="details collapse">{{ element.description|markdown|raw }}</div>
         {% if path(element) %}<a href="{{ path(element) }}" class="more">« More »</a>{% endif %}
     </div>
 {% endmacro %}

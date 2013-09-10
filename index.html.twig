@@ -11,6 +11,13 @@
 
 {% block content %}
     <div class="row">
+        <div class="span12">
+            <div class="well">
+                {{ project.introduction|raw }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="span7">
             {% if project.namespace.namespaces|length > 0 or not project.index.packages %}
                 <div class="well">

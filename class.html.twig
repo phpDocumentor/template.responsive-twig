@@ -45,7 +45,7 @@
                                         {% endif %}
                                     </th>
                                     <td>
-                                        {% if (tag.name == "since") %}
+                                        {% if (tag.name == "since" or "deprecated") %}
                                             {{ tag.version }}
                                         {% endif %}
                                         {{ tag.description|markdown|raw }}
@@ -81,7 +81,7 @@
                                                 </th>
                                                 <td>
                                                     {% for tag in tagList %}
-                                                        {% if (tag.name == "since") %}
+                                                        {% if (tag.name == "since" or "deprecated") %}
                                                             {{ tag.version }}
                                                         {% endif %}
                                                         {% if (tag.name == "see") %}

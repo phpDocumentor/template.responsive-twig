@@ -24,12 +24,12 @@
 {% macro renderPackageDetails(node) %}
     {% import _self as self %}
 
-    {% if node.classes|length > 0 or node.interfaces|length > 0 or node.traits|length > 0 or node.functions|length > 0 or node.constants|length > 0 %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('index.html') }}"><i class="icon-th"></i></a></li>
+        {{ self.buildBreadcrumb(node) }}
+    </ul>
 
-        <ul class="breadcrumb">
-            <li><a href="{{ path('index.html') }}"><i class="icon-th"></i></a></li>
-            {{ self.buildBreadcrumb(node) }}
-        </ul>
+    {% if node.classes|length > 0 or node.interfaces|length > 0 or node.traits|length > 0 or node.functions|length > 0 or node.constants|length > 0 %}
 
         {% if node.functions|length > 0 %}
             <div class="package-indent">

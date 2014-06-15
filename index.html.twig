@@ -60,6 +60,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ path('deprecated.html') }}">
+                                <i class="icon-list-alt"></i> Deprecated {{ macros.renderDeprecatedCounter(project.indexes.elements) }}
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ path('markers.html') }}">
                                 <i class="icon-list-alt"></i> Markers {{ macros.renderMarkerCounter(project.files) }}
                             </a>

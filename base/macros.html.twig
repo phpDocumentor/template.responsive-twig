@@ -6,6 +6,14 @@
     <span class="label label-info">{{ count }}</span>
 {% endmacro %}
 
+{% macro renderDeprecatedCounter(files) %}
+    {% set count = 0 %}
+    {% for element in project.indexes.elements if element.deprecated %}
+        {% set count = count + 1 %}
+    {% endfor %}
+    <span class="label label-info">{{ count }}</span>
+{% endmacro %}
+
 {% macro renderErrorCounter(files) %}
     {% set count = 0 %}
     {% for file in files %}

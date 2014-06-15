@@ -12,7 +12,7 @@
 {% block content %}
     <div class="row">
         <div class="span7">
-            {% if project.namespace.namespaces|length > 0 or not project.indexes.packages %}
+            {% if project.indexes.namespaces|length > 0 or not project.indexes.packages %}
                 <div class="well">
                     <ul class="nav nav-list">
                         <li class="nav-header">Namespaces</li>

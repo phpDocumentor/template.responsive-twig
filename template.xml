@@ -33,5 +33,6 @@
     <transformation writer="twig" source="templates/responsive-twig/reports/deprecated.html.twig" artifact="deprecated.html"/>
     <transformation writer="twig" source="templates/responsive-twig/graphs/class.html.twig" artifact="graph_class.html"/>
     <transformation writer="Graph" source="Class" artifact="classes.svg" />
+    <transformation writer="statistics" artifact="phpdoc-stats.xml"/>
   </transformations>
 </template>
